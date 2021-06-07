@@ -1,0 +1,76 @@
+[
+{
+        "_id" : "5fc2b78f4be256386c6b96ed",
+        "nivodostopa" : "urednik",
+        "priljubljeniClanki" : [
+                "5fc2c2e7dbe30a09784b6113",
+                "5fc2c807dbe30a09784b6119",
+                "5fc2c586dbe30a09784b6116",
+                "5fc2c17ddbe30a09784b6111"
+        ],
+        "ime" : "Mark",
+        "priimek" : "Breznik",
+        "vzdevek" : "mbdev",
+        "email" : "mark.breznik@gmail.com",
+        "telstevilka" : "040 852 109",
+        "nakljucnaVrednost" : "8030ecec601d80053350ac0e5b59e0ad",
+        "zgoscenaVrednost" : "743d6c4acad134cd3abb068bc1cbb2a6d58f56276fd6e8014e5d0ee8dbadd7255c09ecb5e218553d7ac0a3bfa54eec6f0b76540f49b58abb567cb9838ff23d6a",
+        "__v" : 0
+},
+{
+        "_id" : "5fc2b7b94be256386c6b96ee",
+        "nivodostopa" : "novinar",
+        "priljubljeniClanki" : [
+                "5fc2c2e7dbe30a09784b6113",
+                "5fc2bf73dbe30a09784b610e",
+                "5fc2c66cdbe30a09784b6118",
+                "5fc2bfe0dbe30a09784b610f",
+                "5fc2c21edbe30a09784b6112"
+        ],
+        "ime" : "Matjaž",
+        "priimek" : "Bevc",
+        "vzdevek" : "mbevc",
+        "email" : "matjaz.bevc@gmail.com",
+        "telstevilka" : "040 123 109",
+        "nakljucnaVrednost" : "22e74dadc5a6a18b5c4bac233cf1f820",
+        "zgoscenaVrednost" : "9e3099e9d3b45b56494e6d64b7061304118fbab85a182d30bc81cb451ea2f976cf9e1a3454246e99dfd9b53cf9974cd8cb81c2d4c148a1adbdba945f63d683b1",
+        "__v" : 0
+},
+{
+        "_id" : "5fc2b7e34be256386c6b96ef",
+        "nivodostopa" : "avtor",
+        "priljubljeniClanki" : [
+                "5fc2c87fdbe30a09784b611a",
+                "5fc2bfe0dbe30a09784b610f",
+                "5fc2c8fadbe30a09784b611b",
+                "5fc2c2e7dbe30a09784b6113",
+                "5fc2bf73dbe30a09784b610e"
+        ],
+        "ime" : "Eva",
+        "priimek" : "Vidmar",
+        "vzdevek" : "evica",
+        "email" : "eva.vidmar@gmail.com",
+        "telstevilka" : "051 321 109",
+        "nakljucnaVrednost" : "0a0f0ccb4ae829152ae83e9a9c44acd9",
+        "zgoscenaVrednost" : "f0b9850a7fad91479370acca82ccc3deea7cafb61f8d6d2fed8b46f9e452608c8509f40f2128dad316677b69fa3dac8ef9bf8e89157ff004e265d635ed101463",
+        "__v" : 0
+},
+{
+        "_id" : "5fc2bebd885f8c33cc35d534",
+        "nivodostopa" : "admin",
+        "priljubljeniClanki" : [
+                "5fc2bfe0dbe30a09784b610f",
+                "5fc2c2e7dbe30a09784b6113",
+                "5fc2c17ddbe30a09784b6111",
+                "5fc2c0c8dbe30a09784b6110"
+        ],
+        "ime" : "Blaž",
+        "priimek" : "Pridgar",
+        "vzdevek" : "blazek26",
+        "email" : "blaz.pridgar@gmail.com",
+        "telstevilka" : "051 882 109",
+        "nakljucnaVrednost" : "218607afc62bef487a781c1dd0afae0f",
+        "zgoscenaVrednost" : "76f988d737fd9d65450d93433def9a8b6aae6d1e4501936cd505349d9a702cd83325b8aef7672b9462ac7f95ee3031a4173eb5fec6a1912f95223f3718024a7e",
+        "__v" : 0
+}
+]

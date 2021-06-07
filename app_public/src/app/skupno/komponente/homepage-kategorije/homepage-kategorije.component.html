@@ -1,0 +1,14 @@
+<head>
+     <meta name="Description" content="Podstrani za razlicne kategorije clankov.">
+</head>
+<div class="alert alert-warning" [hidden]="!sporocilo">{{sporocilo}}</div>
+<div class="container media-podlaga">
+      <div class="row">
+        <div class = "col-lg-4 col-md-6 col.sm-12" *ngFor="let clanek of clanki">
+          <a routerLink="/article/{{clanek._id}}">
+            <img src="{{clanek.slika}}" alt="slika clanka" class="media-slika img-fluid">
+            <p class="image-caption-text media-opis-slike media-link">{{clanek.naslov}}</p>
+          </a>
+        </div>
+      </div>
+</div>

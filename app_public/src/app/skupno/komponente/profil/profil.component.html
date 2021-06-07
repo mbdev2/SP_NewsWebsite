@@ -1,0 +1,106 @@
+<head>
+     <meta name="Description" content="Profil prijavljenega uporabnika.">
+</head>
+<div class="alert alert-warning" [hidden]="!sporocilo">{{sporocilo}}</div>
+<div class="profile">
+     <div class="uporabnik">
+          <h1>{{uporabnik.vzdevek}}</h1>
+          <h2>{{uporabnik.ime}} {{uporabnik.priimek}}, {{uporabnik.nivodostopa}}</h2>
+     </div>
+     <hr class="debelo">
+     <div class="buttons row">
+
+
+          <div *ngIf="uporabnik.nivodostopa !== 'uporabnik'" class="button col-lg-3 col-md-3 col-sm-12">
+               <a class="btn btn-primary btn-lg col-12"  routerLink="/mediainput">
+                    <img src="assets/images/white-plus.png" alt="+" class="plus">
+                    Nov članek
+               </a>
+          </div>
+
+          <div *ngIf="uporabnik.nivodostopa === 'admin'" class="button col-lg-2 col-md-3 col-sm-12">
+              <a class="btn btn-primary btn-lg col-12"  routerLink="/admin">Admin panel</a>
+          </div>
+          <div *ngIf="uporabnik.nivodostopa === 'admin'" class="button col-lg-2 col-md-3 col-sm-12">
+              <a class="btn btn-primary btn-lg col-12"  routerLink="/odobritev">Odobritev</a>
+          </div>
+
+          <div *ngIf="uporabnik.nivodostopa === 'urednik'" class="button col-lg-2 col-md-3 col-sm-12">
+              <a class="btn btn-primary btn-lg col-12"  routerLink="/odobritev">Odobritev</a>
+          </div>
+
+          <div class="button col-lg-2 col-md-3 col-sm-12">
+              <a class="btn btn-primary btn-lg col-12"  (click)="odjava()">Odjavi</a>
+          </div>
+          <div class="button col-lg-2 ml-auto col-md-3 col-sm-12">
+              <a class="btn btn-primary btn-lg col-12"  routerLink="/profile/uredi">Uredi</a>
+          </div>
+     </div>
+     <br>
+     <div class="Vsebina">
+          <section class="profile-zbirka">
+               <h2>Priljubljeni članki</h2>
+               <div *ngIf="priljubljeniClanki | jeKajClankov else elsePriljubljeni">
+                    <p>Trenutno nimate priljubljenih clankov</p>
+               </div>
+               <ng-template #elsePriljubljeni>
+                    <div *ngFor="let clanek of priljubljeniClanki" class="col-sm col-sm-pull">
+                         <section class="profile-clanek">
+                              <a class = "col-xs-3" routerLink="/article/{{clanek._id}}">
+                                   <img src="{{clanek.slika}}" alt="slika clanka" class="image">
+                              </a>
+                              <div class="clanek-opis">
+                                   <div class="row">
+                                       <div class="col-sm">
+                                            <a class = "col-xs-3" routerLink="/article/{{clanek._id}}">
+                                                 <h4 class="naslov">{{clanek.naslov}}</h4>
+                                            </a>
+                                            <p class="info">{{clanek.kraj}}, {{clanek.datum | date : 'd. MMMM, yyyy'}}</p>
+                                            <p class="caption">{{clanek.caption}}</p>
+                                       </div>
+                                   </div>
+                              </div>
+                         </section>
+                         <hr class="dotted">
+                    </div>
+                    <a routerLink="/prikaziVsePriljubljene">
+                         <p>Pokaži vse</p>
+                    </a>
+               </ng-template>
+          </section>
+          <hr>
+
+          <section class="profile-zbirka">
+               <h2>Moji članki</h2>
+               <div *ngIf="mojiClanki | jeKajClankov else elseMoji">
+                    <p>Trenutno nimate objavljenih clankov</p>
+               </div>
+               <ng-template #elseMoji>
+                    <div *ngFor="let clanek of mojiClanki" class="col-sm col-sm-pull">
+                         <section class="profile-clanek">
+                              <a class = "col-xs-3" routerLink="/article/{{clanek._id}}">
+                                   <img src="{{clanek.slika}}" alt="slika clanka" class="image">
+                              </a>
+                              <div class="clanek-opis">
+                                   <div class="row">
+                                       <div class="col-sm">
+                                            <a class = "col-xs-3" routerLink="/article/{{clanek._id}}">
+                                                 <h4 class="naslov">{{clanek.naslov}}</h4>
+                                            </a>
+                                            <p class="info">{{clanek.kraj}}, {{clanek.datum | date : 'd. MMMM, yyyy'}}</p>
+                                            <p class="caption">{{clanek.caption}}</p>
+                                       </div>
+                                   </div>
+                              </div>
+                         </section>
+                         <hr class="dotted">
+                    </div>
+                    <a routerLink="/prikaziVseMoje">
+                         <p>Pokaži vse</p>
+                    </a>
+               </ng-template>
+          </section>
+
+     </div>
+
+</div>

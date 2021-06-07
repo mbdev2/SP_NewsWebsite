@@ -1,0 +1,87 @@
+<head>
+     <meta name="Description" content="Stran kjer lahko administrator ureja in briše uporabnike.">
+</head>
+<div class="alert alert-warning" [hidden]="!sporocilo">{{sporocilo}}</div>
+
+  <div class=container width=80%>
+    <h1>Uporabniki</h1><br>
+            <div *ngFor="let uporabnik of uporabniki" class="row bg-light">
+              <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2">
+                <strong>{{uporabnik.ime}} {{uporabnik.priimek}}</strong>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">{{uporabnik.email}}</div>
+
+              <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2">{{uporabnik.vzdevek}}</div>
+
+              <div class="col-sm-12 col-md-6 col-lg-5 col-xl-5">
+
+                    <form (submit)="posodobiUporabnika(uporabnik)">
+                         <div class="row">
+                                  <div class="col-sm-12 col-md-6 col-lg-5 col-xl-5">
+                                       <select [(ngModel)]="uporabnik.nivodostopa" id="ocena" name="kategorija" class="form-control">
+                                         <option value="admin">admin</option>
+                                         <option value="urednik">urednik</option>
+                                         <option value="novinar">novinar</option>
+                                         <option value="avtor">avtor</option>
+                                         <option value="uporabnik">uporabnik</option>
+                                      </select>
+                                  </div>
+                                  <div class="col-sm-12 col-md-6 col-lg-7 col-xl-7">
+                                       <button type=submit class="btn btn-success col-12">Potrdi</button>
+                                  </div>
+                         </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-7 col-xl-7 ml-auto">
+                             <button (click)="izbrisiTegaUporabnika(uporabnik, uporabnik._id)" class="btn btn-success col-12">Izbriši uporabnika</button>
+                            <br>
+                        </div>
+                    </div>
+
+                          <!-- MODALNO OKNO
+                          <div class="modal fade" id="modalnoOknoIzbrisi" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                   <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Potrditev</h5>
+                                      <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <p>
+                                        Ste prepričani da želite izbrisati tega uporabnika?
+                                      </p>
+                                      <p class="text-secondary">
+                                        <small>Če izbrišete uporabnika, bo ta trajno odstranjen iz podatkovne baze.</small>
+                                      </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Prekliči</button>
+                                      <a class="btn btn-danger btn-lg" (click)="izbrisiTegaUporabnika(uporabnik, uporabnik._id)">Potrdi</a>
+                                    </div>
+                                   </div>
+                                </div>
+                               </div>
+                   -->
+
+                </div>
+          </div>
+          <br><br>
+
+          <h2>Graf števila priljubljenih člankov po uporabnikih</h2><br>
+
+          <div class="chart-wrapper">
+              <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [legend]="barChartLegend"
+              [chartType]="barChartType">
+            </canvas>
+          </div>
+    </div>

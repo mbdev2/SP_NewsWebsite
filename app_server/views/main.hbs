@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col">
+         <a href="/live" > <button type="button" class="btn btn-secondary btn-lg btn-block d-flex align-items-start">
+                <span style="font-size: 25px;">V ŽIVO</span>
+         </button>
+         </a>
+         </div>
+    </div>
+</div>
+
+<div class="container media-podlaga">
+    <div class="row">
+      <div class="col">
+          <a href="/danes" class="media-link">
+          <h4 class="media-naslov">Danes</h4>
+          </a>
+          <hr>
+          <div class="row">
+                   {{#each aktualno as |aktualni|}}
+                           <a class = "col-lg-4 col-md-6 col.sm-12" href="/article/{{aktualni._id}}">
+                              <img src="{{aktualni.slika}}" class="media-slika img-fluid">
+                               <p class="image-caption-text media-opis-slike media-link">{{aktualni.naslov}}</p>
+                            </a>
+                    {{/each}}
+         </div>
+     </div>
+    </div>
+</div>
+
+<div class="container media-podlaga-2">
+    <div class="row">
+        <div class="col">
+            <a href="/kultura" class="media-link">
+            <h4 class="media-naslov">Kultura</h4>
+            </a>
+            <hr>
+            <div class="row">
+                    {{#each kultura as |kulturni|}}
+                            <a class = "col-lg-4 col-md-6 col.sm-12" href="/article/{{kulturni._id}}">
+                                <img src="{{kulturni.slika}}" class="media-slika img-fluid">
+                                <p class="image-caption-text media-opis-slike media-link">{{kulturni.naslov}}</p>
+                            </a>
+                    {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container media-podlaga-2">
+    <div class="row">
+        <div class="col">
+            <a href="/sport" class="media-link">
+                <h4 class="media-naslov">Šport</h4>
+            </a>
+            <hr>
+            <div class="row">
+                {{#each sport as |sportni|}}
+                    <a class = "col-lg-4 col-md-6 col.sm-12" href="/article/{{sportni._id}}">
+                        <img src="{{sportni.slika}}" class="media-slika img-fluid">
+                        <p class="image-caption-text media-opis-slike media-link">{{sportni.naslov}}</p>
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

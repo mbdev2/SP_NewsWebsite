@@ -1,0 +1,44 @@
+<div class="signup-form">
+  <form action="/api/auth/signin" method="post">
+    <h2>Prijava</h2>
+    <p>Če ste že registrirani, se prosimo prijavite!</p>
+    <hr>
+      <div class="row">
+        <div class="col">
+        <div class="form-group">
+          <input class="form-control" class="form-control" type="email" name="email" placeholder="uporabnik@domena.si" required="required">
+        </div>
+        </div>
+        <div class="col">
+        <div class="form-group">
+          <input class="form-control" class="form-control" type="password" name="geslo" placeholder="geslo.." required="required">
+        </div>
+        </div>
+      </div>
+    <input class="btn btn-primary btn-lg" type="submit" value="Prijava">
+  </form>
+  <form action="/api/auth/signup" method="post">
+  	<h2>Registracija</h2>
+  	<p>Prosimo izpolnite spodnji obrazec za registracijo!</p>
+  	<hr>
+        <div class="form-group">
+  		<div class="row">
+  			<div class="col"><input type="text" class="form-control" name="ime" placeholder="Ime" pattern="[A-Za-zČčŠšŽžĆć]+" required="required"></div>
+  			<div class="col"><input type="text" class="form-control" name="priimek" placeholder="Priimek" pattern="[A-Za-zČčŠšŽžĆć]+" required="required"></div>
+  		</div>
+        </div>
+        <div class="form-group">
+        	<input type="text" class="form-control" name="vzdevek" placeholder="Vzdevek" pattern="[A-Za-zČčŠšŽžĆć0-9]+" required="required">
+        </div>
+        <div class="form-group">
+        	<input type="email" class="form-control" name="email" placeholder="uporabnik@domena.si" required="required">
+        </div>
+        <div class="form-group">
+        	<input type="tel" class="form-control" name="telstevilka" placeholder="Telefonska številka (npr. 040 111 222)" pattern="\d{3} \d{3} \d{3}" title="Zahtevan format: npr. 040 444 222" required="required">
+        </div>
+  	   <div class="form-group">
+            <input type="password" class="form-control" name="geslo" placeholder="Geslo" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mora biti dolgo vsaj 8 znakov, vsebovati vsaj eno malo in eno veliko črko ter vsaj eno številko" required="required">
+        </div>
+        <input class="btn btn-primary btn-lg" type="submit" value="Registracija">
+  </form>
+  </div>

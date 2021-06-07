@@ -1,0 +1,25 @@
+<h1>Članki, ki čakajo na odobritev</h1>
+<div class="col-sm col-sm-pull">
+     {{#each odobritevClanki as |clanek|}}
+          <section class="profile-clanek">
+               <a class = "col-xs-3" href="/approval">
+                    <img src="{{clanek.slika}}" class="image">
+               </a>
+               <div class="clanek-opis">
+                    <div class="row">
+                        <div class="col-sm">
+                                  <h4 class="naslov">{{clanek.naslov}}</h4>
+                             <p class="info">{{clanek.kraj}} {{formatirajDatum clanek.datum}}</p>
+                             <p class="caption"><strong>{{clanek.caption}}</strong></p><br>
+                             <p class="besedilo">{{clanek.besedilo}}</p>
+                        </div>
+                    </div>
+               </div>
+            </section>
+          <div class="row justify-content-end">
+               <a class="btn btn-primary btn-lg" href="../overview/post/{{clanek._id}}">Objavi</a>
+               <a type="button" class="btn ml-auto btn-danger" href="../overview/delete/{{clanek._id}}">Izbriši</a>
+          </div>
+          <hr class="dotted">
+       {{/each}}
+</div>

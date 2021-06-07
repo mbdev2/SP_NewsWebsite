@@ -1,0 +1,49 @@
+<head>
+     <meta name="Description" content="Domača stran naše spletne strani.">
+</head>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col">
+      <a routerLink="live" > <button type="button" class="btn btn-secondary btn-lg btn-block d-flex align-items-start">
+        <span style="font-size: 25px;">V ŽIVO</span>
+      </button>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container media-podlaga">
+    <a routerLink="danes" class="media-link">
+      <h4>Danes</h4>
+      <hr>
+    </a>
+  <div class="row">
+    <div class="col">
+      <app-homepage-kategorije [naslovKategorije]="kategorijaAktualno"></app-homepage-kategorije>
+    </div>
+  </div>
+</div>
+
+<div class="container media-podlaga">
+  <a routerLink="kultura" class="media-link">
+    <h4>Kultura</h4>
+    <hr>
+  </a>
+  <div class="row">
+    <div class="col">
+      <app-homepage-kategorije [naslovKategorije]="kategorijaKultura"></app-homepage-kategorije>
+    </div>
+  </div>
+</div>
+
+<div class="container media-podlaga">
+  <a routerLink="sport" class="media-link">
+    <h4>Šport</h4>
+    <hr>
+  </a>
+  <div class="row">
+    <div class="col">
+      <app-homepage-kategorije [naslovKategorije]="kategorijaSport"></app-homepage-kategorije>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<head>
+     <meta name="Description" content="Stran z rezultati iskanja.">
+</head>
+<div class="container">
+  <div class="alert alert-warning" [hidden]="!sporocilo">{{sporocilo}}</div>
+  <h4>Najdeni videoposnetki</h4>
+  <hr>
+  <div *ngIf="videos.length> 0">
+    <h6>Število rezultatov: {{videos.length}}</h6>
+  </div>
+  <div *ngIf="videos.length == 0">
+    <h6>Žal ni bilo najdenih videoposnetkov.</h6>
+  </div>
+</div>
+<div class="container media-podlaga">
+  <div class="row" *ngFor="let video of videos">
+    <section class="profile-clanek" style="padding: 20px">
+      <a  href="{{video.link}}">
+        <img src="https://i1.ytimg.com/vi/{{video.id}}/hqdefault.jpg" alt="youtube video" class="image img-fluid">
+      </a>
+      <div class="clanek-opis">
+        <div class="row">
+          <div class="col-sm">
+            <a  href="{{video.link}}">
+              <h4>{{video.title}}</h4>
+            </a>
+            <p class="caption">{{video.published | date : 'd. MMMM, yyyy'}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<br>
+
+<div class="container">
+  <div class="alert alert-warning" [hidden]="!sporocilo">{{sporocilo}}</div>
+  <h4>Najdeni članki</h4>
+  <hr>
+  <div *ngIf="clanki.length> 0">
+     <h6>Število rezultatov: {{clanki.length}}</h6>
+  </div>
+  <div *ngIf="clanki.length == 0">
+     <h6>Žal ni bilo najdenih člankov.</h6>
+  </div>
+</div>
+<div class="container media-podlaga">
+  <div class="row" *ngFor="let clanek of clanki">
+    <section class="profile-clanek" style="padding: 20px">
+      <a  routerLink="/article/{{clanek._id}}">
+        <img src="{{clanek.slika}}" alt="slika clanka" class="image img-fluid">
+      </a>
+      <div class="clanek-opis">
+        <div class="row">
+          <div class="col-sm">
+            <a class = "col-xs-3" routerLink="/article/{{clanek._id}}">
+              <h4 class="naslov">{{clanek.naslov}}</h4>
+            </a>
+            <p class="info">{{clanek.kraj}} {{clanek.datum  | date : 'd. MMMM, yyyy'}}</p>
+            <p class="caption">{{clanek.caption}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

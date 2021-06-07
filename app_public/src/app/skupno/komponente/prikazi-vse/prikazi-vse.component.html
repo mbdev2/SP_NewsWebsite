@@ -1,0 +1,29 @@
+<head>
+     <meta name="Description" content="Podstrani ki prikazeta vse muporabnikove in njeove priljubljene clanke.">
+</head>
+<div class="alert alert-warning" [hidden]="!sporocilo">{{sporocilo}}</div>
+<div class="uporabnik">
+  <h1>{{naslov}}</h1>
+</div>
+<div *ngFor="let clanek of clanki" class="col-sm col-sm-pull">
+          <section class="profile-clanek">
+               <a class = "col-xs-3" routerLink="/article/{{clanek._id}}">
+                    <img src="{{clanek.slika}}" alt="slika clanka" class="image">
+               </a>
+               <div class="clanek-opis">
+                    <div class="row">
+                        <div class="col-sm">
+                             <a class = "col-xs-3" routerLink="/article/{{clanek._id}}">
+                                  <h4 class="naslov">{{clanek.naslov}}</h4>
+                             </a>
+                             <p class="info">{{clanek.kraj}} {{clanek.datum | date : 'd. MMMM, yyyy'}}</p>
+                             <p class="caption">{{clanek.caption}}</p>
+                        </div>
+                    </div>
+               </div>
+          </section>
+          <div *ngIf="naslov === 'Moji članki'" class="row justify-content-end">
+               <a class="btn btn-primary btn-lg" routerLink="/article/uredi/{{clanek._id}}">Uredi</a>
+          </div>
+          <hr class="dotted">
+</div>

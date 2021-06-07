@@ -1,0 +1,94 @@
+<head>
+     <script data-dapp-detection="">!function(){let e=!1;function n(){if(!e){const n=document.createElement("meta");n.name="dapp-detected",document.head.appendChild(n),e=!0}}if(window.hasOwnProperty("ethereum")){if(window.__disableDappDetectionInsertion=!0,void 0===window.ethereum)return;n()}else{var t=window.ethereum;Object.defineProperty(window,"ethereum",{configurable:!0,enumerable:!1,set:function(e){window.__disableDappDetectionInsertion||n(),t=e},get:function(){if(!window.__disableDappDetectionInsertion){const e=arguments.callee;e&&e.caller&&e.caller.toString&&-1!==e.caller.toString().indexOf("getOwnPropertyNames")||n()}return t}})}}();</script>
+</head>
+<div class="mediaform">
+       <div class="novclanek">
+            <h1>Nov članek</h1>
+       </div>
+       <hr>
+       <div class="MediaInputclanekform">
+            <form action="/mediainput" method="post">
+                 <select id="ocena" name="kategorija" class="form-control">
+                    <option>Danes</option>
+                    <option>Ekonomija</option>
+                    <option>Izobrazba</option>
+                    <option>Covid</option>
+                    <option>Kultura</option>
+                    <option>Šport</option>
+                 </select>
+                 <input type="text" class="MediaInputpolje" name="naslov" placeholder="Naslov članka" required="required">
+                 <input type="text" class="MediaInputpolje" name="kraj" placeholder="Kraj" pattern="[A-Za-zČčŠšŽžĆć ]+" required="required">
+
+          {{!-- NALAGANJE SLIKE IN PRETVORBA V BASE64 --}}
+                 <p> <small>Izberite sliko.</small> </p>
+                 <input type="file" id="file-selector" class="MediaInputpolje">
+                    <p id="status"></p>
+                    <div>
+                          <img id="output">
+                    </div>
+                    <input type="hidden" id="potDoSlike" name="slika">
+                    <br>
+                    <script>
+                        const status = document.getElementById('status');
+                        const output = document.getElementById('output');
+                        const potDoSlike = document.getElementById('potDoSlike');
+                        if (window.FileList && window.File && window.FileReader) {
+                          document.getElementById('file-selector').addEventListener('change', event => {
+                            output.src = '';
+                            status.textContent = '';
+                            const file = event.target.files[0];
+                            if (!file.type) {
+                              status.textContent = 'Error: The File.type property does not appear to be supported on this browser.';
+                              return;
+                            }
+                            if (!file.type.match('image.*')) {
+                              status.textContent = 'Error: The selected file does not appear to be an image.'
+                              return;
+                            }
+                            const reader = new FileReader();
+                            reader.addEventListener('load', event => {
+                              output.src = event.target.result;
+                              potDoSlike.value = event.target.result;
+                            });
+                            reader.readAsDataURL(file);
+                          });
+                        }
+                    </script>
+
+                 <textarea type="text" class="MediaInputcaptiontext" name="caption" placeholder="Kratek opis članka"></textarea>
+                 <textarea class="MediaInputclanektext" name="clanektext" placeholder="V polje vnesite vsebino članka"></textarea>
+
+                 {{!-- MODALNO OKNO ZA OBJAVO --}}
+                 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalnoOknoObjavi">Objavi</button>
+                 <div class="modal fade" id="modalnoOknoObjavi" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Potrditev</h5>
+                              <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>
+                                Ste prepričani da želite objaviti ta članek?
+                              </p>
+                              <p class="text-secondary">
+                                <small>Če objavite svoj članek, bo ta viden vsen uporabnikom strani eTv.</small>
+                              </p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Prekliči</button>
+                              <button type="submit" class="btn btn-primary btn-lg">
+                                Potrdi
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+            </form>
+       </div>
+ </div>

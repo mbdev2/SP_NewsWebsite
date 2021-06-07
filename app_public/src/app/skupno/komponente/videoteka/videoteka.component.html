@@ -1,0 +1,33 @@
+<head>
+     <meta name="Description" content="Videoteka naše spletne strani, kjer lahko uporabnik dostopa do vseh videev eTv iz Youtuba.">
+</head>
+<div class="container">
+    <h4>Videoteka</h4>
+    <hr>
+</div>
+<div class="alert alert-warning" [hidden]="!sporocilo">{{sporocilo}}</div>
+<div class="container" *ngIf="jePovezava() else elseBlock">
+    <div class="row bg-light" *ngFor="let entry of feed">
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <iframe
+                  [src]="('https://www.youtube.com/embed/' + (entry.id) | dovoliUrl)"
+                  height=300
+                  allowfullscreen
+                  allowtransparency
+                  allow="autoplay"
+                ></iframe>
+        </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <a class = "col" href="{{entry.link}}">
+                        <h4 class="image-caption-text media-opis-slike media-link">{{entry.title}}</h4>
+                    </a>
+                  <p>Kanal: {{entry.author}}</p>
+                  <p>Objavljeno: {{entry.published | date : 'd. MMMM, yyyy'}}</p>
+            </div>
+
+    </div>
+</div>
+<ng-template #elseBlock>
+     <h5>Za delovanje videoteke prosim vspostavitve povezavo.</h5>
+</ng-template>

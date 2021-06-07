@@ -1,0 +1,63 @@
+<div class="container">
+    <h4>Najdeni videoposnetki</h4>
+    <hr>
+    {{#if videos}}
+        <h6>Število rezultatov: {{steviloMojih videos}}</h6>
+    {{else}}
+        <h6>Žal ni bilo najdenih videoposnetkov.</h6>
+    {{/if}}
+</div>
+
+<div class="container media-podlaga">
+                {{#each videos as |video|}}
+                    <div class="row">
+                    <section class="profile-clanek" style="padding: 20px">
+                        <a  href="http://youtu.be/{{video.yt:videoId}}">
+                            <img src="https://i1.ytimg.com/vi/{{video.yt:videoId}}/hqdefault.jpg" class="image img-fluid">
+                        </a>
+                        <div class="clanek-opis">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <a  href="http://youtu.be/{{video.yt:videoId}}">
+                                        <h4>{{video.title}}</h4>
+                                    </a>
+                                    <p class="caption">{{formatirajDatum video.published}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    </div>
+                {{/each}}
+</div>
+<br>
+<div class="container">
+    <h4>Najdeni članki</h4>
+    <hr>
+    {{#if clanki}}
+        <h6>Število rezultatov: {{steviloMojih clanki}}</h6>
+    {{else}}
+        <h6>Žal ni bilo najdenih člankov.</h6>
+    {{/if}}
+</div>
+<div class="container media-podlaga">
+                {{#each clanki as |clanek|}}
+                <div class="row">
+                    <section class="profile-clanek" style="padding: 20px">
+                        <a  href="/article/{{clanek._id}}">
+                            <img src="{{clanek.slika}}" class="image img-fluid">
+                        </a>
+                        <div class="clanek-opis">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <a class = "col-xs-3" href="/article/{{clanek._id}}">
+                                        <h4 class="naslov">{{clanek.naslov}}</h4>
+                                    </a>
+                                    <p class="info">{{clanek.kraj}} {{formatirajDatum clanek.datum}}</p>
+                                    <p class="caption">{{clanek.caption}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                {{/each}}
+</div>

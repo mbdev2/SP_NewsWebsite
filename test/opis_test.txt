@@ -1,0 +1,39 @@
+Napolni DB
+Izbriši DB
+
+Domaca stran
+  - število člankov na domači strani (=13)
+Iskanje
+  - vnesemi iskalni niz Lavbič
+  - ustreznost podatkov na strani z informacijami
+    - preverimo število zadetkov
+    - preverimo naslov iskalnega niza
+Članek
+  - izberi "Šokantno - Dejan Lavbič dodelil najvišjo oceno pri LP ekipi Multimedijcev #8"
+  - ustreznost podatkov na strani s podrobnostmi
+    - naslov članka ("Šokantno - Dejan Lavbič dodelil najvišjo oceno pri LP ekipi Multimedijcev #8")
+    - avtor članka (blazek26)
+    - kraj in datum obajve članka (Celje, 29. December, 2020)
+    - vsebuje komentar z vsebino "Če bi videl koliko truda smo v to vložili, sploh ne bi bilo šokantno...."
+Prijava uporabnika
+  - izbira strani "Prijava"
+  - vnos podatkov uporabnika ("mark.breznik@gmail.com", "Nekajvarnega1")
+  - preveri ali je uporabnik prijavljen
+  - ustreznost podatkov na strani
+    - preveri JWT žeton ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmMyYjc4ZjRiZTI1NjM4NmM2Yjk2ZWQiLCJlbWFpbCI6Im1hcmsuYnJlem5pa0BnbWFpbC5jb20iLCJpbWUiOiJNYXJrIiwiZXhwIjoxNjEwMjAyNjU3LCJpYXQiOjE2MDk1OTc4NTd9.6o4fpiOUzPe25NpBNkugx0vlfVELerTbv6kiemosMmo")
+    - preveri nivo dostopa ("urednik")
+Urejanje uporabnika
+  - izbira strani uredi
+  - vnos novega imena "Markic"
+  - preveri ali je ime posodobljeno
+Dodajanje članka
+  - Dodaj članek
+  - vnos podatkov ("Danes", "Joj so te časi kruti", Ljubljana, "Nekaj za opis", "Nekaj za osebino")
+  - preveri ali je clanek dodan v rubriki Danes
+Odjava uporabnika
+  - preveri ali je uporabnik prijavljen
+  - zahtevaj odjavo
+  - preveri ali je uporabnik odjavljen
+
+Izbriši DB
+Polni DB

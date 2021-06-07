@@ -1,0 +1,30 @@
+<div class="container">
+    <h4>Videoteka</h4>
+    <hr>
+</div>
+
+<div class="container">
+    <div class="row bg-light">
+      {{#each feed.entry as |entry|}}
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+                <iframe
+                  src="https://www.youtube.com/embed/{{entry.yt:videoId}}"
+                  height=300
+                  allowfullscreen
+                  allowtransparency
+                  allow="autoplay"
+                ></iframe>
+        </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <a class = "col" href="http://youtu.be/{{entry.yt:videoId}}">
+                        <h4 class="image-caption-text media-opis-slike media-link">{{entry.title}}</h4>
+                    </a>
+                  <p>Kanal: {{entry.author.0.name}}</p>
+                  <p>Objavljeno: {{formatirajDatum entry.published}}</p>
+            </div>
+
+      {{/each}}
+    </div>
+</div>

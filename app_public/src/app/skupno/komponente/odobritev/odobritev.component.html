@@ -1,0 +1,25 @@
+<head>
+     <meta name="Description" content="Stran za odobritev clankov v cakalni vrsti.">
+</head>
+<div class="alert alert-warning" [hidden]="!sporocilo">{{sporocilo}}</div>
+<h1>Članki, ki čakajo na odobritev</h1>
+<div *ngFor="let clanek of odobritevClanki" class="col-sm col-sm-pull">
+          <section class="profile-clanek">
+               <img src="{{clanek.slika}}" class="image" alt="slika clanka">
+               <div class="clanek-opis">
+                    <div class="row">
+                        <div class="col-sm">
+                                  <h4 class="naslov">{{clanek.naslov}}</h4>
+                             <p class="info">{{clanek.kraj}} {{clanek.datum | date : 'd. MMMM, yyyy'}}</p>
+                             <p class="caption"><strong>{{clanek.caption}}</strong></p><br>
+                             <p class="besedilo">{{clanek.besedilo}}</p>
+                        </div>
+                    </div>
+               </div>
+            </section>
+          <div class="row justify-content-end">
+               <a class="btn btn-primary btn-lg" (click)="objavi(clanek)">Objavi</a>
+               <a type="button" class="btn ml-auto btn-danger" (click)="izbrisi(clanek)">Izbriši</a>
+          </div>
+          <hr class="dotted">
+</div>

@@ -1,0 +1,111 @@
+<div class="profile">
+     <div class="uporabnik">
+          <h1>{{uporabnik.vzdevek}}</h1>
+          <h2>{{uporabnik.ime}} {{uporabnik.priimek}}, {{uporabnik.nivodostopa}}</h2>
+     </div>
+     <hr class="debelo">
+     <div class="buttons row">
+          {{#primerjaj uporabnik.nivodostopa "uporabnik"}}
+               {{!-- DO NOTHING --}}
+          {{else}}
+               <div class="button col-lg-3 col-md-3 col-sm-12">
+                    <a class="btn btn-primary btn-lg col-12"  href="/mediainput">
+                         <img src="/images/white-plus.png" alt="+" class="plus">
+                         Nov članek
+                    </a>
+               </div>
+          {{/primerjaj}}
+          {{#primerjaj uporabnik.nivodostopa "admin"}}
+               <div class="button col-lg-2 col-md-3 col-sm-12">
+                   <a class="btn btn-primary btn-lg col-12"  href="/admin">Admin panel</a>
+               </div>
+               <div class="button col-lg-2 col-md-3 col-sm-12">
+                   <a class="btn btn-primary btn-lg col-12"  href="/approval">Odobritev</a>
+               </div>
+          {{/primerjaj}}
+          {{#primerjaj uporabnik.nivodostopa "urednik"}}
+               <div class="button col-lg-2 col-md-3 col-sm-12">
+                   <a class="btn btn-primary btn-lg col-12"  href="/approval">Odobritev</a>
+               </div>
+          {{/primerjaj}}
+          <div class="button col-lg-2 col-md-3 col-sm-12">
+              <a class="btn btn-primary btn-lg col-12"  href="/api/signout">Odjavi</a>
+          </div>
+          <div class="button col-lg-2 ml-auto col-md-3 col-sm-12">
+              <a class="btn btn-primary btn-lg col-12"  href="/profile/uredi">Uredi</a>
+          </div>
+     </div>
+     <br>
+     <div class="Vsebina">
+          <section class="profile-zbirka">
+               <h2>Priljubljeni članki</h2>
+               {{#if_jeKajClankov priljubljeniClanki}}
+                    <p>Trenutno nimate priljubljenih clankov</p>
+               {{/if_jeKajClankov}}
+               <div class="col-sm col-sm-pull">
+                    {{#each priljubljeniClanki as |clanek|}}
+                         <section class="profile-clanek">
+                              <a class = "col-xs-3" href="/article/{{clanek._id}}">
+                                   <img src="{{clanek.slika}}" class="image">
+                              </a>
+                              <div class="clanek-opis">
+                                   <div class="row">
+                                       <div class="col-sm">
+                                            <a class = "col-xs-3" href="/article/{{clanek._id}}">
+                                                 <h4 class="naslov">{{clanek.naslov}}</h4>
+                                            </a>
+                                            <p class="info">{{clanek.kraj}} {{formatirajDatum clanek.datum}}</p>
+                                            <p class="caption">{{clanek.caption}}</p>
+                                       </div>
+                                   </div>
+                              </div>
+                         </section>
+                         <hr class="dotted">
+                      {{/each}}
+               </div>
+               {{#if_jeKajClankovObratno priljubljeniClanki}}
+                    <a href="/prikaziVsePriljubljene">
+                         <p>Pokaži vse</p>
+                    </a>
+               {{/if_jeKajClankovObratno}}
+          </section>
+          <hr>
+          <section class="profile-zbirka">
+               <h2>Moji članki</h2>
+               {{#if_jeKajClankov mojiClanki}}
+                    <p>Trenutno nimate objavljenih clankov</p>
+               {{/if_jeKajClankov}}
+               <div class="col-sm col-sm-pull">
+                    {{#each mojiClanki as |clanek|}}
+                         <section class="profile-clanek">
+                              <a class = "col-xs-3" href="/article/{{clanek._id}}">
+                                   <img src="{{clanek.slika}}" class="image">
+                              </a>
+                              <div class="clanek-opis">
+                                   <div class="row">
+                                       <div class="col-sm">
+                                            <a class = "col-xs-3" href="/article/{{clanek._id}}">
+                                                 <h4 class="naslov">{{clanek.naslov}}</h4>
+                                            </a>
+                                            <p class="info">{{clanek.kraj}} {{formatirajDatum clanek.datum}}</p>
+                                            <p class="caption">{{clanek.caption}}</p>
+                                       </div>
+                                   </div>
+                              </div>
+                         </section>
+                         <div class="row justify-content-end">
+                              <a class="btn btn-primary btn-lg" href="/article/uredi/{{clanek._id}}">Uredi</a>
+                         </div>
+                         <hr class="dotted">
+                      {{/each}}
+               </div>
+               {{#if_jeKajClankovObratno mojiClanki}}
+                    <a href="/prikaziVseMoje">
+                         <p>Pokaži vse</p>
+                    </a>
+               {{/if_jeKajClankovObratno}}
+          </section>
+
+     </div>
+
+</div>

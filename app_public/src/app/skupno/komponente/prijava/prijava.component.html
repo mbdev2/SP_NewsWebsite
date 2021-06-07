@@ -1,0 +1,24 @@
+<head>
+     <meta name="Description" content="Stran za prijavo registriranih uporabnikov.">
+</head>
+<div class="signup-form">
+  <p class="lead">Še niste registrirani uporabnik? Prosim <a routerLink="/registracija">registrirajte</a> se.</p>
+  <form (submit)="posiljanjePodatkov()" autocomplete="off">
+    <div role="alert" *ngIf="napakaNaObrazcu" class="alert alert-danger">{{ napakaNaObrazcu }}</div>
+    <h2>Prijava</h2>
+    <hr>
+      <div class="row">
+        <div class="col">
+        <div class="form-group">
+          <input class="form-control" class="form-control" type="email" name="email" placeholder="uporabnik@domena.si" required="required" [(ngModel)]="prijavniPodatki.email" [disabled]="!jePovezava()">
+        </div>
+        </div>
+        <div class="col">
+        <div class="form-group">
+          <input class="form-control" class="form-control" type="password" name="geslo" placeholder="geslo.." required="required" [(ngModel)]="prijavniPodatki.geslo" [disabled]="!jePovezava()">
+        </div>
+        </div>
+      </div>
+    <input class="btn btn-primary btn-lg" [disabled]="!jePovezava()" type="submit" value="Prijava">
+  </form>
+</div>

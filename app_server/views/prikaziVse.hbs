@@ -1,0 +1,34 @@
+<div class="uporabnik">
+  <h1>Moji članki</h1>
+  {{#if moji}}
+     <h2>Št. objavljenih člankov: {{steviloMojih clanki}}</h2>
+  {{else}}
+     <h2>Št. priljubljenih člankov: {{steviloMojih clanki}}</h2>
+  {{/if}}
+</div>
+<div class="col-sm col-sm-pull">
+     {{#each clanki as |clanek|}}
+          <section class="profile-clanek">
+               <a class = "col-xs-3" href="/article/{{clanek._id}}">
+                    <img src="{{clanek.slika}}" class="image">
+               </a>
+               <div class="clanek-opis">
+                    <div class="row">
+                        <div class="col-sm">
+                             <a class = "col-xs-3" href="/article/{{clanek._id}}">
+                                  <h4 class="naslov">{{clanek.naslov}}</h4>
+                             </a>
+                             <p class="info">{{clanek.kraj}} {{formatirajDatum clanek.datum}}</p>
+                             <p class="caption">{{clanek.caption}}</p>
+                        </div>
+                    </div>
+               </div>
+          </section>
+          {{#if ../moji}}
+               <div class="row justify-content-end">
+                    <a class="btn btn-primary btn-lg" href="/article/uredi/{{clanek._id}}">Uredi</a>
+               </div>
+          {{/if}}
+          <hr class="dotted">
+       {{/each}}
+</div>

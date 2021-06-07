@@ -1,0 +1,90 @@
+<div>
+     <form action="/profile/posodobiProfil" method="post">
+        <h2>Uredi svoj profil</h2>
+        <hr>
+           <div class="form-group">
+             <div class="row">
+                  <div class="col">
+                       <p><small>Ime</small></p>
+                       <input type="text" class="form-control" name="ime" value="{{uporabnik.ime}}" placeholder="Ime" pattern="[A-Za-zČčŠšŽžĆć]+" required="required">
+                  </div>
+                  <div class="col">
+                       <p><small>Priimek</small></p>
+                       <input type="text" class="form-control" name="priimek" value="{{uporabnik.priimek}}" placeholder="Priimek" pattern="[A-Za-zČčŠšŽžĆć]+" required="required">
+                  </div>
+             </div>
+           </div>
+           <div class="form-group">
+                <p><small>Telefonska številka</small></p>
+             <input type="phone" class="form-control" name="telstevilka" value="{{uporabnik.telstevilka}}" placeholder="Telefonska številka (npr. 040 433 445)" pattern="\d{3} \d{3} \d{3}" title="Zahtevan format: npr. 040 444 222" required="required">
+           </div>
+           <div class="form-group">
+                <p><small>Če želite vpišite novo geslo, sicer bo geslo ostalo nespremenjeno.</small></p>
+               <input type="password" class="form-control" name="geslo" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mora biti dolgo vsaj 8 znakov, vsebovati vsaj eno malo in eno veliko črko ter vsaj eno številko" placeholder="Geslo">
+           </div>
+           <div class="row justify-content-between">
+                <button type="button" class="col-2 btn btn-primary btn-lg" data-toggle="modal" data-target="#modalnoOknoObjavi">Posodobi</button>
+                <div class="col-2 row">
+                     <button type="button" class="col-10 btn ml-auto btn-primary btn-lg" data-toggle="modal" data-target="#modalnoOknoIzbrisi">Izbrisi profil</button>
+                </div>
+           </div>
+
+           {{!-- MODALNO OKNO ZA POSODOBITEV --}}
+           <div class="modal fade" id="modalnoOknoObjavi" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Potrditev</h5>
+                        <button type="button" class="close" data-dismiss="modal"
+                          aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <p>
+                          Ste prepričani da želite posodobiti svoj profil?
+                        </p>
+                        <p class="text-secondary">
+                          <small>Spremembe, ki jih naredite so trajne.</small>
+                        </p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Prekliči</button>
+                        <button type="submit" class="btn btn-primary btn-lg">
+                          Potrdi
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {{!-- MODALNO OKNO ZA IZBRIS --}}
+              <div class="modal fade" id="modalnoOknoIzbrisi" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                     <div class="modal-dialog" role="document">
+                       <div class="modal-content">
+                        <div class="modal-header">
+                           <h5 class="modal-title" id="exampleModalLabel">Potrditev</h5>
+                           <button type="button" class="close" data-dismiss="modal"
+                             aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                           </button>
+                        </div>
+                        <div class="modal-body">
+                           <p>
+                             Ste prepričani da želite izbrisati svoj profil?
+                           </p>
+                           <p class="text-secondary">
+                             <small>Če izbrišete svoj profil, bodo vaši podatki trajno odstranjeni iz podatkovne baze eTv.</small>
+                           </p>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Prekliči</button>
+                           <a class="btn btn-primary btn-lg" href="/profile/izbrisi">Potrdi</a>
+                        </div>
+                       </div>
+                     </div>
+                   </div>
+     </form>
+</div>

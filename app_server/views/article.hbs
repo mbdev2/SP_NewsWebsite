@@ -1,0 +1,73 @@
+<div class="container">
+    <h4 class="article-podrocje">{{clanek.kategorija}}</h4>
+    <div class="row justify-content-center">
+        <div class="col-md-12 col-sm-12 article-podlaga">
+            <div class="row justify-content-center">
+              <div class="col-md-3 col-sm-12 article-avtor">
+                  <h5>{{clanek.avtorVzdevek}}</h5>
+                  {{clanek.kraj}} {{formatirajDatum clanek.datum}}
+                  <hr>
+                  {{#primerjaj priljubljen "nePrijavljen"}}
+                         {{!-- DO NOTHING --}}
+                  {{else}}
+                       {{#primerjaj ../priljubljen "priljubljen"}}
+                         <a class="btn btn-primary gumb-dropdown"  href="/odstraniIzPriljubljenih/{{../clanek._id}}">Odstrani iz priljubljenih</a>
+                       {{else}}
+                         <a class="btn btn-primary gumb-dropdown"  href="/dodajMedPriljubljene/{{../clanek._id}}">Dodaj med priljubljene</a>
+                       {{/primerjaj}}
+                  {{/primerjaj}}
+              </div>
+              <div class="col-md-9 col-sm-12">
+                  <h1 class="article-naslov"> {{clanek.naslov}} </h1>
+                  <h5 class="article-podpodnaslov">{{clanek.caption}}</h5>
+                  <img src="{{clanek.slika}}" alt = "Slika novice."  class="img-fluid article-slika">
+                  <p class="article-besedilo">
+                  {{clanek.besedilo}}
+                  </p>
+              </div>
+              <div class="col-md-10 col-sm-12">
+                  <h4 class="article-comments_header">Komentarji</h4>
+                  <hr>
+                  {{#primerjaj priljubljen "nePrijavljen"}}
+                         {{!-- DO NOTHING --}}
+                  {{else}}
+                       <div class="row">
+                           <div class="col-md-2 col-sm-10">
+                               <a href="/profile">
+                                   <i class="fa fa-user-circle fa-3x"></i>
+                                   <h6>Uporabnik</h6>
+                               </a>
+                           </div>
+                           <div class="col-md-10 col-sm-12">
+                                <form action="/article/{{../clanek._id}}/komentarji" method="post">
+                                    <label for="comment">Komentar:</label>
+                                    <textarea class="form-control article-comment" rows="5" name="komentar" id="comment"></textarea>
+
+                                    <input class="btn btn-primary btn-lg" type="submit" value="Dodaj komentar">
+                               </form>
+                           </div>
+                       </div>
+                  {{/primerjaj}}
+                  {{#each clanek.komentarji as |komentar|}}
+                    <div class="komentar">
+                         <div class="row justify-content-between rounded">
+                              <div class="col-6">
+                                   <span class="komentar-avtor">{{komentar.avtor}}</span>
+                                   <small class="komentar-datum">{{formatirajDatum komentar.datum}}</small>
+                              </div>
+                              {{#if_jeMojKomentar ../mojiKomentarji komentar._id}}
+                              <div class="col-6">
+                                   <a href="/article/{{../../clanek._id}}/izbrisKomentarja/{{komentar._id}}">
+                                        <p class="text-right"> Izbriši komentar</p>
+                                   </a>
+                              </div>
+                              {{/if_jeMojKomentar}}
+                         </div>
+                         <div class="col-12">{{komentar.besediloKomentarja}}</div>
+                    </div>
+                 {{/each}}
+              </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+http://localhost:3000/
+http://localhost:3000/prijava
+http://localhost:3000/registracija
+http://localhost:3000/ekonomija/1
+http://localhost:3000/article/5feb1c1b9d89e8138b539e58
+http://localhost:3000/videoteka
+http://localhost:3000/article/5feb2ed39d89e8138b539e6b
+http://localhost:3000/rezultatiIskanja?iskalniNiz=eu

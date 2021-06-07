@@ -1,0 +1,120 @@
+<head>
+     <script data-dapp-detection="">!function(){let e=!1;function n(){if(!e){const n=document.createElement("meta");n.name="dapp-detected",document.head.appendChild(n),e=!0}}if(window.hasOwnProperty("ethereum")){if(window.__disableDappDetectionInsertion=!0,void 0===window.ethereum)return;n()}else{var t=window.ethereum;Object.defineProperty(window,"ethereum",{configurable:!0,enumerable:!1,set:function(e){window.__disableDappDetectionInsertion||n(),t=e},get:function(){if(!window.__disableDappDetectionInsertion){const e=arguments.callee;e&&e.caller&&e.caller.toString&&-1!==e.caller.toString().indexOf("getOwnPropertyNames")||n()}return t}})}}();</script>
+     <meta name="Description" content="Stran za ustvarjanje in urejanje člankov.">
+
+</head>
+<div class="mediaform">
+       <div class="novclanek">
+            <h1>{{naslov}}</h1>
+       </div>
+       <hr>
+       <div class="MediaInputclanekform">
+            <form (ngSubmit)="dodajNovClanek()">
+                 <div *ngIf="napakaNaObrazcu" class="alert alert-danger" role="alert">
+                    {{ napakaNaObrazcu }}
+                 </div>
+                 <select [(ngModel)]="novClanek.kategorija" id="ocena" name="kategorija" class="form-control">
+                    <option value="Danes">Danes</option>
+                    <option value="Ekonomija">Ekonomija</option>
+                    <option value="Izobrazba">Izobrazba</option>
+                    <option value="Covid">Covid</option>
+                    <option value="Kultura">Kultura</option>
+                    <option value="Šport">Šport</option>
+                 </select>
+                 <input [(ngModel)]="novClanek.naslov" type="text" class="MediaInputpolje" name="naslov" placeholder="Naslov članka" required="required">
+                 <input [(ngModel)]="novClanek.kraj" type="text" class="MediaInputpolje" name="kraj" placeholder="Kraj" pattern="[A-Za-zČčŠšŽžĆć ]+" required="required">
+
+          <!-- NALAGANJE SLIKE IN PRETVORBA V BASE64 -->
+               <label class="btn btn-primary btn-lg">
+                    <input #imageInput type="file" accept="image/*" (change)="processFile(imageInput)">
+                    Izberite sliko
+               </label>
+                 <div *ngIf="selectedFile" class="img-preview-container">
+
+                      <img src="{{novClanek.slika}}" alt="izbrana slika">
+                      <br><br>
+
+                      <div *ngIf="selectedFile.pending" class="img-loading-overlay">
+                        <div class="img-spinning-circle"></div>
+                      </div>
+
+                      <div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"> Slika uspešno naložena!</div>
+                      <div *ngIf="selectedFile.status === 'fail'" class="alert alert-danger"> Slika neuspešno naložena!</div>
+                 </div>
+
+                 <textarea [(ngModel)]="novClanek.caption" type="text" class="MediaInputcaptiontext" name="caption" placeholder="Kratek opis članka"></textarea>
+                 <textarea [(ngModel)]="novClanek.clanektext" class="MediaInputclanektext" name="clanektext" placeholder="V polje vnesite vsebino članka"></textarea>
+
+                 <!-- GUMBI -->
+                 <div *ngIf="naslov === 'Uredi članek' else elseBlock" class="row justify-content-between">
+                      <button [disabled]="!jePovezava()" type="button" class="col-2 btn btn-primary btn-lg" data-toggle="modal" data-target="#modalnoOknoObjavi">Posodobi</button>
+                      <button [disabled]="!jePovezava()" type="button" class="col-1 btn btn-primary btn-lg" data-toggle="modal" data-target="#modalnoOknoIzbrisi">Izbrisi</button>
+                 </div>
+                 <ng-template #elseBlock>
+                      <button [disabled]="!jePovezava()" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalnoOknoObjavi">Objavi</button>
+                 </ng-template>
+
+                 <!-- MODALNO OKNO ZA OBJAVO -->
+                 <div class="modal fade" id="modalnoOknoObjavi" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Potrditev</h5>
+                              <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <div *ngIf="napakaNaObrazcu" class="alert alert-danger" role="alert">
+                                   {{ napakaNaObrazcu }}
+                              </div>
+                              <p>
+                                Ste prepričani da želite objaviti ta članek?
+                              </p>
+                              <p class="text-secondary">
+                                <small>Če objavite svoj članek, bo ta viden vsem uporabnikom strani eTv.</small>
+                              </p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Prekliči</button>
+                              <button type="submit" class="btn btn-primary btn-lg">
+                                Potrdi
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+               <!-- MODALNO OKNO ZA IZBRIS -->
+               <div class="modal fade" id="modalnoOknoIzbrisi" tabindex="-1" role="dialog"
+                      aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                         <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Potrditev</h5>
+                            <button type="button" class="close" data-dismiss="modal"
+                              aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                         </div>
+                         <div class="modal-body">
+                            <p>
+                              Ste prepričani da želite izbrisati ta članek?
+                            </p>
+                            <p class="text-secondary">
+                              <small>Če izbrišete svoj članek, bo ta trajno odstranjen iz podatkovne baze eTv.</small>
+                            </p>
+                         </div>
+                         <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Prekliči</button>
+                            <a class="btn btn-primary btn-lg" (click)="izbrisiClanek()">Potrdi</a>
+                         </div>
+                        </div>
+                      </div>
+                    </div>
+
+            </form>
+       </div>
+ </div>

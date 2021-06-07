@@ -1,0 +1,74 @@
+<head>
+     <meta name="Description" content="Stran za prikaz poljubnega članka.">
+</head>
+<div class="container">
+    <div class="alert alert-warning" [hidden]="!sporocilo">{{sporocilo}}</div>
+    <h4 class="article-podrocje">{{clanek.kategorija}}</h4>
+    <div class="row justify-content-center">
+        <div class="col-md-12 col-sm-12 article-podlaga">
+            <div class="row justify-content-center">
+              <div class="col-md-3 col-sm-12 article-avtor">
+                  <h5>{{clanek.avtorVzdevek}}</h5>
+                  {{clanek.kraj}}, {{clanek.datum | date : 'd. MMMM, yyyy'}}
+                  <hr>
+
+                  <div *ngIf="priljubljen !== 'nePrijavljen'">
+                       <div *ngIf="priljubljen === 'priljubljen' else elsePriljubljen">
+                            <button [disabled]="!jePovezava()" class="btn btn-primary gumb-dropdown"  (click)="odstraniIzPriljubljenih()">Odstrani iz priljubljenih</button>
+                       </div>
+                       <ng-template #elsePriljubljen>
+                            <button [disabled]="!jePovezava()" class="btn btn-primary gumb-dropdown"  (click)="dodajMedPriljubljene()">Dodaj med priljubljene</button>
+                       </ng-template>
+                  </div>
+
+              </div>
+              <div class="col-md-9 col-sm-12">
+                  <h1 class="article-naslov"> {{clanek.naslov}} </h1>
+                  <h5 class="article-podpodnaslov">{{clanek.caption}}</h5>
+                  <img src="{{clanek.slika}}" alt = "Slika novice."  class="img-fluid article-slika">
+                  <p class="article-besedilo">
+                  {{clanek.clanektext}}
+                  </p>
+              </div>
+              <div class="col-md-10 col-sm-12">
+                  <h4 class="article-comments_header">Komentarji</h4>
+                  <hr>
+                  <div *ngIf="priljubljen !== 'nePrijavljen' && jePovezava()">
+                       <div class="row">
+
+                           <div class="col-md-12 col-sm-12">
+                                <form (ngSubmit)="posljiKomentar()">
+                                    <div *ngIf="napakaNaObrazcu" class="alert alert-danger" role="alert">
+                                        {{ napakaNaObrazcu }}
+                                    </div>
+                                    <label for="comment">Komentar:</label>
+                                    <textarea [(ngModel)]="novKomentar.besedilo" class="form-control article-comment" rows="5" name="komentar" id="comment"></textarea>
+
+                                    <input class="btn btn-primary btn-lg" type="submit" [disabled]="!jePovezava()" value="Dodaj komentar">
+                               </form>
+                           </div>
+                       </div>
+                  </div>
+                  <div *ngFor="let komentar of clanek.komentarji | najnovejsiNaprej">
+                       <div class="komentar">
+                           <div class="row justify-content-between rounded">
+                                <div class="col-6">
+                                     <span class="komentar-avtor">{{komentar.avtor}}    </span>
+                                     <small class="komentar-datum">{{komentar.datum | date : 'd. MMMM, yyyy'}}</small>
+                                </div>
+
+                                <div *ngIf="mojiKomentarji | jeMojKomentar: komentar._id">
+                                     <div class="col-6">
+                                          <button [disabled]="!jePovezava()" (click)="izbrisiKomentar(komentar, komentar._id)" class="btn btn-primary gumb-dropdown">Izbriši komentar</button>
+                                     </div>
+                                </div>
+
+                           </div>
+                           <div class="col-12">{{komentar.besediloKomentarja}}</div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>

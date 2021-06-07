@@ -1,0 +1,47 @@
+{
+  "name": "4.-in-5.-lp",
+  "version": "3.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "mocha test --bail --reporter mochawesome --reporter-options autoOpen=true,reportDir=test/porocilo,reportFilename=porocilo,json=false"
+  },
+  "engines": {
+    "node": ">=15.2.0",
+    "npm": ">=7.0.8"
+  },
+  "dependencies": {
+    "@obg-lab/youtube-channel-feed": "*",
+    "axios": "*",
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "compression": "^1.7.4",
+    "cookie-parser": "*",
+    "cors": "*",
+    "crypto": "*",
+    "debug": "*",
+    "dotenv": "^8.2.0",
+    "express": "*",
+    "express-jwt": "^6.0.0",
+    "hbs": "*",
+    "http-errors": "*",
+    "jsonwebtoken": "*",
+    "mongo": "*",
+    "mongoose": "*",
+    "morgan": "*",
+    "ng": "^0.0.0",
+    "ngx-bootstrap": "^6.2.0",
+    "nodemon": "*",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "swagger-jsdoc": "^6.0.0",
+    "swagger-ui-express": "^4.1.6"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chromedriver": "^87.0.4",
+    "mocha": "^8.2.1",
+    "mochawesome": "^6.2.1",
+    "selenium-webdriver": "^4.0.0-alpha.8"
+  }
+}

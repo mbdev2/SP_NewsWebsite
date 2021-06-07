@@ -1,0 +1,31 @@
+<head>
+     <meta name="Description" content="Stran za registracijo novih uporabnikov.">
+</head>
+<div class="signup-form">
+  <p class="lead">Ste že registrirani uporabnik? Prosim <a routerLink="/prijava">prijavite</a> se.</p>
+  <form (submit)="posiljanjePodatkov()" autocomplete="off">
+    <div role="alert" *ngIf="napakaNaObrazcu" class="alert alert-danger">{{ napakaNaObrazcu }}</div>
+  	<h2>Registracija</h2>
+  	<p>Prosimo izpolnite spodnji obrazec za registracijo!</p>
+  	<hr>
+        <div class="form-group">
+  		<div class="row">
+  			<div class="col"><input type="text" class="form-control" name="ime" placeholder="Ime" pattern="[A-Za-zČčŠšŽžĆć]+" required="required" [(ngModel)]="prijavniPodatki.ime" [disabled]="!jePovezava()"></div>
+  			<div class="col"><input type="text" class="form-control" name="priimek" placeholder="Priimek" pattern="[A-Za-zČčŠšŽžĆć]+" required="required" [(ngModel)]="prijavniPodatki.priimek" [disabled]="!jePovezava()"></div>
+  		</div>
+        </div>
+        <div class="form-group">
+        	<input type="text" class="form-control" name="vzdevek" placeholder="Vzdevek" pattern="[A-Za-zČčŠšŽžĆć0-9]+" required="required" [(ngModel)]="prijavniPodatki.vzdevek" [disabled]="!jePovezava()">
+        </div>
+        <div class="form-group">
+        	<input type="email" class="form-control" name="email" placeholder="uporabnik@domena.si" required="required" [(ngModel)]="prijavniPodatki.email" [disabled]="!jePovezava()">
+        </div>
+        <div class="form-group">
+        	<input type="tel" class="form-control" name="telstevilka" placeholder="Telefonska številka (npr. 040 111 222)" pattern="\d{3} \d{3} \d{3}" title="Zahtevan format: npr. 040 444 222" required="required" [(ngModel)]="prijavniPodatki.telstevilka" [disabled]="!jePovezava()">
+        </div>
+  	   <div class="form-group">
+            <input type="password" class="form-control" name="geslo" placeholder="Geslo" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mora biti dolgo vsaj 8 znakov, vsebovati vsaj eno malo in eno veliko črko ter vsaj eno številko" required="required" [(ngModel)]="prijavniPodatki.geslo" [disabled]="!jePovezava()">
+        </div>
+        <input class="btn btn-primary btn-lg" [disabled]="!jePovezava()" type="submit" value="Registracija">
+  </form>
+  </div>

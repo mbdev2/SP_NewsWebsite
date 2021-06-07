@@ -1,0 +1,63 @@
+
+  <div class=container width=80%>
+    <h1>Uporabniki</h1><br>
+
+            {{#each uporabniki as |uporabnik|}}
+            <div class="row bg-light">
+              <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                <strong>{{uporabnik.ime}} {{uporabnik.priimek}}</strong>
+              </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3">{{uporabnik.email}}</div>
+
+              <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2">{{uporabnik.vzdevek}}</div>
+
+              <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 ">
+              <form action="/admin/novNivoDostopa/{{uporabnik._id}}" method="post">
+                <select name="{{uporabnik._id}}">
+              <option selected>{{uporabnik.nivodostopa}}</option>
+              <option>admin</option>
+              <option>urednik</option>
+              <option>novinar</option>
+              <option>avtor</option>
+              <option>uporabnik</option>
+                </select>
+              <button type=submit class="btn btn-success">Potrdi</button>
+            </div>
+
+              <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 ml-auto" height="50px"><button type="button" class="btn ml-auto btn-danger" data-toggle="modal"
+                data-target="#modalnoOknoIzbrisi">Izbriši uporabnika</button><br></div>
+
+
+            </div>
+
+            <div class="modal fade" id="modalnoOknoIzbrisi" tabindex="-1" role="dialog"
+                   aria-labelledby="exampleModalLabel" aria-hidden="true">
+                   <div class="modal-dialog" role="document">
+                     <div class="modal-content">
+                      <div class="modal-header">
+                         <h5 class="modal-title" id="exampleModalLabel">Potrditev</h5>
+                         <button type="button" class="close" data-dismiss="modal"
+                           aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                         </button>
+                      </div>
+                      <div class="modal-body">
+                         <p>
+                           Ste prepričani da želite izbrisati tega uporabnika?
+                         </p>
+                         <p class="text-secondary">
+                           <small>Če izbrišete uporabnika, bo ta trajno odstranjen iz podatkovne baze.</small>
+                         </p>
+                      </div>
+                      <div class="modal-footer">
+                         <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Prekliči</button>
+                         <a class="btn btn-danger btn-lg" href="../admin/delete/{{uporabnik._id}}">Potrdi</a>
+                      </div>
+                     </div>
+                   </div>
+                 </div>
+               </form>
+            {{/each}}
+
+    </div>

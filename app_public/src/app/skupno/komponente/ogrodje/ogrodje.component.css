@@ -1,0 +1,23 @@
+.dropdown-toggle, .dropdown-menu {
+  cursor: pointer;
+}
+
+.ni-povezave {
+  color: #f89406;
+}
+
+.nav-link{
+  color: #000000 !important;
+}
+
+.nav-link:hover{
+  color: #000099 !important;
+}
+
+.dropdown{
+  color: #000000 !important;
+}
+
+.dropdown:hover{
+  color: #000099 !important;
+}
