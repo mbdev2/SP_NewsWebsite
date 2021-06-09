@@ -28,6 +28,7 @@ DebtSettler uses a number of open source projects to work properly:
 - passport - great webtoken manager
 - node.js - evented I/O for the backend
 - Express - fast node.js network app framework
+- Swagger - yes, we even offer full REST API documentation :D
 - and many more...
 
 And of course our NewsWebsite is open source!
