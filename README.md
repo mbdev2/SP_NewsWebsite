@@ -13,7 +13,7 @@ Developed by Matjaž Bevc, Mark Breznik, Blaž Pridgar and Eva Vidmar for a cour
 -
 <img width="1400" alt="User rights editor screen" src="https://user-images.githubusercontent.com/72226231/121302469-079c6000-c8fa-11eb-92c0-15d777d2a351.png">
 -
-<img width="1400" alt="Search results screen src="https://user-images.githubusercontent.com/72226231/121302471-079c6000-c8fa-11eb-8d55-db0a53aa3c6c.png">
+<img width="1400" alt="Search results screen" src="https://user-images.githubusercontent.com/72226231/121302471-079c6000-c8fa-11eb-8d55-db0a53aa3c6c.png">
 -
 -
 -
